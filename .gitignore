@@ -1,0 +1,14 @@
+*.jar
+.gradle
+build/
+out/
+
+.gradletasknamecache
+*.json
+
+.idea/
+*.iml
+*.ipr
+
+.DS_Store
+
