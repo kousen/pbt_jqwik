@@ -94,4 +94,12 @@ class CaesarCipherTest {
         assertThat(algorithm.decipher(encoded, offset))
                 .isEqualTo(message);
     }
+
+//    @Property
+//    void checkAllShifts(@ForAll @LowerChars @Chars({' '}) @NotBlank String message,
+//                        @ForAll @Positive int offset) {
+//        String encoded = algorithm.cipher(message, offset);
+//        assertThat(algorithm.decipher(encoded, offset))
+//                .isEqualTo(message);
+//    }
 }

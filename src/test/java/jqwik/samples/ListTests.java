@@ -1,8 +1,6 @@
 package jqwik.samples;
 
-import net.jqwik.api.Example;
-import net.jqwik.api.ForAll;
-import net.jqwik.api.Property;
+import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 import net.jqwik.api.constraints.Size;
 import net.jqwik.api.constraints.UniqueElements;

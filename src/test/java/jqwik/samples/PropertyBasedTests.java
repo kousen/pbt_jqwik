@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -106,6 +107,7 @@ public class PropertyBasedTests {
 
     //@Property(shrinking = ShrinkingMode.OFF)
     @Property(shrinking = ShrinkingMode.FULL)
+    // @Report(Reporting.FALSIFIED)
     // 46341 * 46341 = 2_147_488_281, which is > Integer.MAX_VALUE
     boolean rootOfSquareShouldBeOriginalValue(@Positive @ForAll int anInt) {
         int square = anInt * anInt;
@@ -119,6 +121,14 @@ public class PropertyBasedTests {
     ) throws UnsupportedEncodingException {
         String encoded = URLEncoder.encode(toEncode, charset);
         assertThat(URLDecoder.decode(encoded, charset)).isEqualTo(toEncode);
+    }
+
+    @Property
+    void encodeAndDecodeAreInverseForUTF8(
+            @ForAll @StringLength(min = 1, max = 20) String toEncode
+    ) {
+        String encoded = URLEncoder.encode(toEncode, StandardCharsets.UTF_8);
+        assertThat(URLDecoder.decode(encoded, StandardCharsets.UTF_8)).isEqualTo(toEncode);
     }
 
     @Provide
