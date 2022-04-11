@@ -63,40 +63,40 @@ class CaesarCipherTest {
                 .isEqualTo(SENTENCE);
     }
 
-    @Test
-    void givenSentenceShiftedThree_whenBreakCipher_thenOriginalSentence() {
-        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_THREE);
-
-        assertThat(offset)
-                .isEqualTo(3);
-
-        assertThat(algorithm.decipher(SENTENCE_SHIFTED_THREE, offset))
-                .isEqualTo(SENTENCE);
-    }
-
-    @Test
-    void givenSentenceShiftedTen_whenBreakCipher_thenOriginalSentence() {
-        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_TEN);
-
-        assertThat(offset)
-                .isEqualTo(10);
-
-        assertThat(algorithm.decipher(SENTENCE_SHIFTED_TEN, offset))
-                .isEqualTo(SENTENCE);
-    }
+//    @Test
+//    void givenSentenceShiftedThree_whenBreakCipher_thenOriginalSentence() {
+//        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_THREE);
+//
+//        assertThat(offset)
+//                .isEqualTo(3);
+//
+//        assertThat(algorithm.decipher(SENTENCE_SHIFTED_THREE, offset))
+//                .isEqualTo(SENTENCE);
+//    }
+//
+//    @Test
+//    void givenSentenceShiftedTen_whenBreakCipher_thenOriginalSentence() {
+//        int offset = algorithm.breakCipher(SENTENCE_SHIFTED_TEN);
+//
+//        assertThat(offset)
+//                .isEqualTo(10);
+//
+//        assertThat(algorithm.decipher(SENTENCE_SHIFTED_TEN, offset))
+//                .isEqualTo(SENTENCE);
+//    }
 
     // from web page:
     // "suppose here that offsets are positive and messages only contain lower case letters and spaces"
     @Property
-    void checkAllShifts(@ForAll @LowerChars @Chars({' '}) @NotBlank String message,
-                        @ForAll @IntRange(max = 1000) int offset) {
+    void checkAllShiftsLimited(@ForAll @LowerChars @Chars({' '}) @NotBlank String message,
+                        @ForAll @IntRange(max = 2147483622) int offset) {
         String encoded = algorithm.cipher(message, offset);
         assertThat(algorithm.decipher(encoded, offset))
                 .isEqualTo(message);
     }
 
 //    @Property
-//    void checkAllShifts(@ForAll @LowerChars @Chars({' '}) @NotBlank String message,
+//    void checkAllShifts(@ForAll @NotBlank String message,
 //                        @ForAll @Positive int offset) {
 //        String encoded = algorithm.cipher(message, offset);
 //        assertThat(algorithm.decipher(encoded, offset))
