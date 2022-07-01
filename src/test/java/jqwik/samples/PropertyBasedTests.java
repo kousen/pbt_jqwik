@@ -20,12 +20,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 // from user guide, https://jqwik.net/docs/current/user-guide.html#how-to-use
 // @Disabled
 public class PropertyBasedTests {
-    @Property  // fails!
+    @Property @Disabled("disable until presentation") // fails!
     boolean absoluteValueOfAllNumbersIsPositive(@ForAll int anInteger) {
         return Math.abs(anInteger) >= 0;
     }
 
-    @Property // fails!
+    @Property @Disabled("disable until presentation") // fails!
     void lengthOfConcatenatedStringIsGreaterThanLengthOfEach(
             @ForAll String string1, @ForAll String string2
     ) {
@@ -109,12 +109,13 @@ public class PropertyBasedTests {
     @Property(shrinking = ShrinkingMode.FULL)
     // @Report(Reporting.FALSIFIED)
     // 46341 * 46341 = 2_147_488_281, which is > Integer.MAX_VALUE
+    @Disabled("disable until presentation")
     boolean rootOfSquareShouldBeOriginalValue(@Positive @ForAll int anInt) {
         int square = anInt * anInt;
         return Math.sqrt(square) == anInt;
     }
 
-    @Property  // NOTE: This fails
+    @Property @Disabled("disable until presentation") // NOTE: This fails
     void encodeAndDecodeAreInverse(
             @ForAll @StringLength(min = 1, max = 20) String toEncode,
             @ForAll("charset") String charset
