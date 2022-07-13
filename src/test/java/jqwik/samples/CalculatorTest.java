@@ -26,8 +26,8 @@ class CalculatorTest {
 
     @Property
     boolean sumsOfSmallPositivesAreAlwaysPositive(
-            @ForAll @Size(min = 1, max = 10)
-                    List<@IntRange(min = 1, max = 1000) Integer> addends) {
+            @ForAll @Size(min = 1000, max = 10000)
+                    List<@IntRange(min = 1000, max = 100000) Integer> addends) {
         int result = new Calculator().sum(addends);
         return result > 0;
     }

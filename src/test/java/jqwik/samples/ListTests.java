@@ -4,6 +4,7 @@ import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 import net.jqwik.api.constraints.Size;
 import net.jqwik.api.constraints.UniqueElements;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 // from https://blog.johanneslink.net/2018/03/26/from-examples-to-properties/
 public class ListTests {
-    @Example
+    //@Example
+    @Test
     void reverseList() {
         List<Integer> aList = Arrays.asList(1, 2, 3);
         Collections.reverse(aList);
@@ -23,7 +25,7 @@ public class ListTests {
 
     @Property
     // @Report(Reporting.GENERATED)
-    boolean reverseTwiceIsOriginal(@ForAll List<Integer> original) {
+    boolean reverseTwiceIsOriginal(@ForAll List<String> original) {
         return reverse(reverse(original)).equals(original);
     }
 

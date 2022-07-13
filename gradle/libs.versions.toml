@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.23.1"
 jqwik = "1.6.5"
-junit = "5.9.0-M1"
+junit = "5.9.0-RC1"
 maths = "3.6.1"
 slf4j = "2.0.0-alpha7"
 
@@ -15,8 +15,14 @@ slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
 
 [bundles]
-junit = ["junit-jupiter", "junit-vintage"]
-slf4j = ["slf4j-api", "slf4j-nop"]
+junit = [
+    "junit-jupiter",
+    "junit-vintage",
+]
+slf4j = [
+    "slf4j-api",
+    "slf4j-nop",
+]
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.5.1"

@@ -3,6 +3,7 @@ package jqwik.samples;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.constraints.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -95,11 +96,12 @@ class CaesarCipherTest {
                 .isEqualTo(message);
     }
 
-//    @Property
-//    void checkAllShifts(@ForAll @NotBlank String message,
-//                        @ForAll @Positive int offset) {
-//        String encoded = algorithm.cipher(message, offset);
-//        assertThat(algorithm.decipher(encoded, offset))
-//                .isEqualTo(message);
-//    }
+    @Property
+    @Disabled
+    void checkAllShifts(@ForAll @NotBlank String message,
+                        @ForAll @Positive int offset) {
+        String encoded = algorithm.cipher(message, offset);
+        assertThat(algorithm.decipher(encoded, offset))
+                .isEqualTo(message);
+    }
 }
