@@ -2,10 +2,7 @@ package jqwik.samples.advent2022;
 
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
-import net.jqwik.api.Report;
-import net.jqwik.api.Reporting;
 import net.jqwik.api.constraints.IntRange;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

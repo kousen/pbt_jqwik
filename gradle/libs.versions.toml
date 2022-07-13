@@ -15,14 +15,8 @@ slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
 
 [bundles]
-junit = [
-    "junit-jupiter",
-    "junit-vintage",
-]
-slf4j = [
-    "slf4j-api",
-    "slf4j-nop",
-]
+junit = ["junit-jupiter", "junit-vintage"]
+slf4j = ["slf4j-api", "slf4j-nop"]
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.5.1"

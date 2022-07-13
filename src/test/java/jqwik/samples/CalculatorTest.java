@@ -5,7 +5,6 @@ import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.constraints.IntRange;
 import net.jqwik.api.constraints.Size;
-import org.assertj.core.api.Assertions;
 
 import java.util.List;
 
@@ -36,7 +35,6 @@ class CalculatorTest {
     @Property
     void addingZeroToAnyNumberResultsInNumber(@ForAll int aNumber) {
         int result = new Calculator().sum(List.of(aNumber, 0));
-        Assertions.assertThat(result)
-                .isEqualTo(aNumber);
+        assertThat(result).isEqualTo(aNumber);
     }
 }
