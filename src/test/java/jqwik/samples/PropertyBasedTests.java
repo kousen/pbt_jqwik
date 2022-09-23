@@ -105,7 +105,7 @@ public class PropertyBasedTests {
         return Arbitraries.strings().withCharRange('0', '9').ofLength(5);
     }
 
-    //@Property(shrinking = ShrinkingMode.OFF)
+    // @Property(shrinking = ShrinkingMode.OFF)
     @Property(shrinking = ShrinkingMode.FULL)
     // @Report(Reporting.FALSIFIED)
     // 46341 * 46341 = 2_147_488_281, which is > Integer.MAX_VALUE

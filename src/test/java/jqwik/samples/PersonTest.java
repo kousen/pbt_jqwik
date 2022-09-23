@@ -3,6 +3,7 @@ package jqwik.samples;
 import net.jqwik.api.*;
 
 // from https://blog.johanneslink.net/2018/03/29/jqwik-on-junit5/
+@SuppressWarnings("unused")
 class PersonTest {
     @Property
     boolean anyValidPersonHasAFullName(@ForAll("validPerson") Person aPerson) {
