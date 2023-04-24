@@ -1,9 +1,9 @@
 [versions]
-assertj = "3.23.1"
-jqwik = "1.6.5"
-junit = "5.9.1"
+assertj = "3.24.2"
+jqwik = "1.7.3"
+junit = "5.9.2"
 maths = "3.6.1"
-slf4j = "2.0.2"
+slf4j = "2.0.7"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -25,5 +25,5 @@ slf4j = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
-versions = "com.github.ben-manes.versions:0.42.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.0"
+versions = "com.github.ben-manes.versions:0.46.0"
