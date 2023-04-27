@@ -23,8 +23,8 @@ public class ListTests {
         assertThat(aList).containsExactly(3, 2, 1);
     }
 
-    @Property
     // @Report(Reporting.GENERATED)
+    @Property
     boolean reverseTwiceIsOriginal(@ForAll List<String> original) {
         return reverse(reverse(original)).equals(original);
     }
@@ -35,8 +35,20 @@ public class ListTests {
         return clone;
     }
 
-    @Property
+    // This is ChatGPT 3.5's solution (which is completely wrong):
+//    private <T> List<T> reverseUsingStreams(List<T> original) {
+//        return original.stream()
+//                .sorted(Collections.reverseOrder())
+//                .toList();
+//    }
+//
+//    @Property
+//    boolean reverseListUsingStreams(@ForAll List<Integer> original) {
+//        return reverseUsingStreams(reverseUsingStreams(original)).equals(original);
+//    }
+
     // @Report(Reporting.GENERATED)
+    @Property
     boolean reverseWithWildcardType(@ForAll List<?> original) {
         return reverse(reverse(original)).equals(original);
     }
@@ -52,7 +64,8 @@ public class ListTests {
     }
 
     @Property
-    void uniqueInList(@ForAll @Size(5) @UniqueElements List<@IntRange(max = 10) Integer> aList) {
+    void uniqueInList(@ForAll @Size(5) @UniqueElements
+                      List<@IntRange(max = 10) Integer> aList) {
         assertThat(aList).doesNotHaveDuplicates();
         assertThat(aList).allMatch(anInt -> anInt >= 0 && anInt <= 10);
     }
@@ -79,7 +92,7 @@ public class ListTests {
     private boolean isSorted(List<Integer> sorted) {
         if (sorted.size() <= 1) return true;
         return sorted.get(0) <= sorted.get(1) //
-                && isSorted(sorted.subList(1, sorted.size()));
+               && isSorted(sorted.subList(1, sorted.size()));
     }
 
     private List<Integer> sort(List<Integer> unsorted) {

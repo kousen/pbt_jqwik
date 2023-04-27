@@ -102,7 +102,9 @@ public class PropertyBasedTests {
 
     @Provide
     Arbitrary<String> germanZipCodes() {
-        return Arbitraries.strings().withCharRange('0', '9').ofLength(5);
+        return Arbitraries.strings()
+                .withCharRange('0', '9')
+                .ofLength(5);
     }
 
     // @Property(shrinking = ShrinkingMode.OFF)
