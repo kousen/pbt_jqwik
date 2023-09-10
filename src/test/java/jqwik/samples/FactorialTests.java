@@ -3,12 +3,18 @@ package jqwik.samples;
 import net.jqwik.api.*;
 
 import static org.apache.commons.math3.util.CombinatoricsUtils.factorial;
+import static org.apache.commons.math3.util.CombinatoricsUtils.factorialDouble;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FactorialTests {
     @Provide("0 to 20")
     Arbitrary<Integer> integersBetween0and20() {
         return Arbitraries.integers().between(0, 20);
+    }
+
+    @Provide("0 to 170")
+    Arbitrary<Integer> integersBetween0and170() {
+        return Arbitraries.integers().between(0, 170);
     }
 
     @Property
@@ -51,5 +57,11 @@ class FactorialTests {
     void handleLargeValues(@ForAll("0 to 20") int a) {
         Assume.that(a >= 0 && a <= 20); // Limited to 20! due to integer overflow
         assertThat(factorial(a)).isGreaterThanOrEqualTo(0);
+    }
+
+    @Property
+    void handleLargeValues2(@ForAll("0 to 170") int a) {
+        Assume.that(a >= 0 && a <= 170); // Limited to 170! due to double overflow
+        assertThat(factorialDouble(a)).isGreaterThanOrEqualTo(0);
     }
 }
